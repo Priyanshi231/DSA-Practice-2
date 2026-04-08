@@ -1,0 +1,30 @@
+class Solution {
+public:
+    long long MOD = 1e9 + 7;
+
+    // simple fast power function
+    long long power(long long x, long long n) {
+        long long ans = 1;
+
+        while(n > 0) {
+            if(n % 2 == 1) {        // if odd
+                ans = (ans * x) % MOD;
+            }
+            x = (x * x) % MOD;      // square
+            n = n / 2;              // reduce power
+        }
+
+        return ans;
+    }
+
+    int countGoodNumbers(long long n) {
+
+        long long even = (n + 1) / 2;   // even index count
+        long long odd = n / 2;          // odd index count
+
+        long long part1 = power(5, even); // 5 choices
+        long long part2 = power(4, odd);  // 4 choices
+
+        return (part1 * part2) % MOD;
+    }
+};
