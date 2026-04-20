@@ -1,0 +1,23 @@
+class Solution {
+public:
+    void solve(int n, string curr, vector<string>& ans) {
+        if (curr.size() == n) {
+            ans.push_back(curr);
+            return;
+        }
+
+        // Always add '0'
+        solve(n, curr + "0", ans);
+
+        // Add '1' only if last char is NOT '1'
+        if (curr.empty() || curr.back() != '1') {
+            solve(n, curr + "1", ans);
+        }
+    }
+
+    vector<string> generateBinaryStrings(int n) {
+        vector<string> ans;
+        solve(n, "", ans);
+        return ans;
+    }
+};
