@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void solve(int n, int op, int cl, string curr,vector<string>& ans ){
+        if(curr.length() == 2*n){
+            ans.push_back(curr);
+            return;
+        }
+
+        if(op < n){
+            solve(n,op+1, cl, curr+'(',ans);
+        }
+        if(cl < op){
+            solve(n,op, cl+1, curr+')',ans);
+        }
+    }
+    vector<string> generateParenthesis(int n) {
+        vector<string> ans;
+        solve(n,0,0, "", ans);
+        return ans;
+    }
+};
