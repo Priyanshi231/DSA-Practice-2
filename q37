@@ -1,0 +1,18 @@
+class Solution{
+    public:
+    bool solve(int i, vector<int>& nums,int sum, int k){
+        if(i== nums.size()){
+            return sum == k;
+        }
+
+        bool take = solve(i+1,nums,sum + nums[i], k);
+
+        bool nottake = solve(i+1,nums,sum, k);
+        return take  || nottake;
+
+    }
+    bool checkSubsequenceSum(vector<int>& nums, int k) {
+         //your code goes here
+        return solve(0,nums,0,k);
+    }
+};
