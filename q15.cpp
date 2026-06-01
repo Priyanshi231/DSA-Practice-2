@@ -10,3 +10,4 @@ public:
         nums[n-1] = id;
     }
 };
+
