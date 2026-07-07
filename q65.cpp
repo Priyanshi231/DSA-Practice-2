@@ -14,18 +14,22 @@ public:
     }
     
     int pop() {
+        if(idx == -1){
+            return -1;
+        } 
         int t = arr[idx];
         idx --;
         return t;
     }
     
     int top() {
+        if(idx == -1){
+            return -1;
+        } 
         return arr[idx];
     }
     
     bool isEmpty() {
-        if(idx == -1){
-            return true;
-        }return false;
+        return idx == -1;
     }
 };
